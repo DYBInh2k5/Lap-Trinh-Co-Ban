@@ -1,0 +1,47 @@
+️# 1 IF – ELSE (nhắc lại nhanh)
+x = int(input("Nhập số: "))
+
+if x > 0:
+    print("Số dương")
+elif x < 0:
+    print("Số âm")
+else:
+    print("Bằng 0")
+
+️# 2 Viết hàm kiểm tra số chẵn (AI hay dùng logic này)
+def la_so_chan(n):
+    if n % 2 == 0:
+        return True
+    else:
+        return False
+
+print(la_so_chan(4))  # True
+print(la_so_chan(7))  # False
+
+
+ Có thể viết ngắn hơn:
+
+def la_so_chan(n):
+    return n % 2 == 0
+
+️# 3 Áp dụng với LIST (xử lý dữ liệu – rất AI)
+nums = [1, 2, 3, 4, 5, 6]
+
+so_chan = []
+for n in nums:
+    if la_so_chan(n):
+        so_chan.append(n)
+
+print(so_chan)
+
+
+ Kết quả:
+
+[2, 4, 6]
+
+️# 4 Viết gọn kiểu Python (chuẩn dân AI)
+so_chan = [n for n in nums if n % 2 == 0]
+print(so_chan)
+
+
+ Cái này gọi là list comprehension – nhớ kỹ nhé!
