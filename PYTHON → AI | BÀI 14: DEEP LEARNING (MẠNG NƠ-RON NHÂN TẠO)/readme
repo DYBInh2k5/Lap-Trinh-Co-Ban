@@ -1,0 +1,77 @@
+1️⃣ Neural Network là gì? (hiểu rất quan trọng)
+
+👉 Gồm các neurons (nút)
+👉 Mỗi neuron:
+
+Nhận input
+
+Nhân trọng số
+
+Cộng bias
+
+Qua hàm kích hoạt
+
+📌 Giống não người (đơn giản hóa)
+
+2️⃣ Cài thư viện Deep Learning
+pip install tensorflow
+
+
+(TensorFlow bao gồm Keras – dễ dùng)
+
+3️⃣ Dataset đơn giản (đậu / rớt)
+import numpy as np
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+X = np.array([
+    [4, 4],
+    [5, 5],
+    [6, 6],
+    [7, 7],
+    [8, 8],
+    [9, 9]
+])
+
+y = np.array([0, 0, 1, 1, 1, 1])
+
+4️⃣ Chuẩn hóa dữ liệu (BẮT BUỘC)
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
+
+5️⃣ Xây Neural Network đầu tiên
+model = Sequential([
+    Dense(8, activation="relu", input_shape=(2,)),
+    Dense(4, activation="relu"),
+    Dense(1, activation="sigmoid")
+])
+
+
+👉 Giải thích:
+
+2 input (math, english)
+
+Hidden layers: 8 → 4 neuron
+
+Output: 1 (đậu / rớt)
+
+6️⃣ Compile model
+model.compile(
+    optimizer="adam",
+    loss="binary_crossentropy",
+    metrics=["accuracy"]
+)
+
+7️⃣ Train AI
+model.fit(X, y, epochs=100, verbose=0)
+
+
+🎉 Bạn vừa train Deep Learning model
+
+8️⃣ Dự đoán
+new_student = scaler.transform([[6, 8]])
+prob = model.predict(new_student)
+print(prob)          # xác suất
+print(prob > 0.5)    # True = đậu
