@@ -1,0 +1,51 @@
+1️⃣ Chia dữ liệu: Train / Test
+from sklearn.model_selection import train_test_split
+
+X = df[["average"]]
+y = df["passed"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+
+👉 70% train – 30% test
+
+2️⃣ Train lại model
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+3️⃣ Dự đoán trên tập test
+y_pred = model.predict(X_test)
+print(y_pred)
+
+4️⃣ Đánh giá độ chính xác (Accuracy)
+from sklearn.metrics import accuracy_score
+
+acc = accuracy_score(y_test, y_pred)
+print("Accuracy:", acc)
+
+
+👉 Ví dụ:
+
+Accuracy: 0.83
+
+5️⃣ Confusion Matrix (AI dùng rất nhiều)
+from sklearn.metrics import confusion_matrix
+
+print(confusion_matrix(y_test, y_pred))
+
+
+Ý nghĩa:
+
+[[TN FP]
+ [FN TP]]
+
+6️⃣ Ví dụ thực tế hơn (2 đặc trưng)
+X = df[["math", "english"]]
+y = df["passed"]
+
+
+👉 Không đổi gì thêm — AI tự học
