@@ -1,0 +1,54 @@
+1️⃣ KNN là gì?
+
+👉 Khi có điểm mới, AI:
+
+Tìm K điểm gần nhất
+
+Lấy đa số phiếu để quyết định
+
+📌 Ví dụ:
+
+Học sinh (7, 8)
+
+Hàng xóm: (6,7), (7,8), (8,8)
+➡️ Đa số đậu
+
+2️⃣ Chuẩn hóa dữ liệu (RẤT QUAN TRỌNG)
+
+KNN dùng khoảng cách
+👉 Nếu không chuẩn hóa → sai
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+3️⃣ Chia train / test
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X_scaled, y, test_size=0.3, random_state=42
+)
+
+4️⃣ Train KNN
+from sklearn.neighbors import KNeighborsClassifier
+
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X_train, y_train)
+
+5️⃣ Dự đoán & đánh giá
+from sklearn.metrics import accuracy_score
+
+y_pred = model.predict(X_test)
+print("Accuracy:", accuracy_score(y_test, y_pred))
+
+6️⃣ Dự đoán học sinh mới
+new_student = scaler.transform([[6, 8]])
+print(model.predict(new_student))
+
+7️⃣ Chọn K tốt nhất
+for k in range(1, 6):
+    model = KNeighborsClassifier(n_neighbors=k)
+    model.fit(X_train, y_train)
+    acc = accuracy_score(y_test, model.predict(X_test))
+    print(k, acc)
