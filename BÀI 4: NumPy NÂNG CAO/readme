@@ -1,0 +1,65 @@
+1️⃣ Tạo mảng NumPy
+import numpy as np
+
+a = np.array([1, 2, 3, 4, 5])
+print(a)
+print(type(a))
+
+
+👉 NumPy array ≠ list Python
+👉 Nhanh – tối ưu – dùng trong AI
+
+2️⃣ Phép toán trên mảng (AI dùng cực nhiều)
+a = np.array([1, 2, 3])
+
+print(a + 1)
+print(a * 2)
+
+
+📌 Kết quả:
+
+[2 3 4]
+[2 4 6]
+
+
+👉 Không cần vòng for → rất mạnh
+
+3️⃣ Vector & Ma trận
+v = np.array([1, 2, 3])
+
+m = np.array([
+    [1, 2],
+    [3, 4]
+])
+
+print(v)
+print(m)
+
+4️⃣ Kích thước mảng (rất quan trọng)
+print(v.shape)   # (3,)
+print(m.shape)   # (2, 2)
+
+
+👉 AI làm việc với shape liên tục
+
+5️⃣ Truy cập phần tử
+print(a[0])      # phần tử đầu
+print(m[0][1])   # hàng 0, cột 1
+
+6️⃣ Tính toán thống kê (AI cực hay dùng)
+data = np.array([2, 4, 6, 8])
+
+print(np.mean(data))  # trung bình
+print(np.max(data))   # lớn nhất
+print(np.min(data))   # nhỏ nhất
+print(np.sum(data))   # tổng
+
+7️⃣ Ví dụ AI nhỏ (chuẩn bị Machine Learning)
+scores = np.array([5, 6, 7, 8, 9])
+
+# Chuẩn hóa dữ liệu
+normalized = (scores - np.mean(scores)) / np.std(scores)
+print(normalized)
+
+
+👉 Đây là data preprocessing – bước đầu AI
