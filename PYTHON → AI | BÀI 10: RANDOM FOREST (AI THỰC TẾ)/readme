@@ -1,0 +1,49 @@
+1️⃣ Random Forest là gì?
+
+👉 Tạo nhiều cây quyết định
+👉 Mỗi cây học dữ liệu khác nhau
+👉 Kết quả = đa số phiếu
+
+➡️ Ít overfitting, rất phổ biến
+
+2️⃣ Train Random Forest
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+X = df[["math", "english"]]
+y = df["passed"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+model = RandomForestClassifier(
+    n_estimators=100,
+    random_state=42
+)
+
+model.fit(X_train, y_train)
+
+3️⃣ Dự đoán & đánh giá
+y_pred = model.predict(X_test)
+print("Accuracy:", accuracy_score(y_test, y_pred))
+
+
+👉 Thường cao hơn Decision Tree
+
+4️⃣ Dự đoán thực tế
+print(model.predict([[6, 8]]))  # 1 = đậu
+print(model.predict([[4, 5]]))  # 0 = rớt
+
+5️⃣ Feature Importance (rất quan trọng)
+import pandas as pd
+
+importance = model.feature_importances_
+print(pd.DataFrame({
+    "feature": X.columns,
+    "importance": importance
+}))
+
+
+👉 Biết môn nào ảnh hưởng nhiều hơn
