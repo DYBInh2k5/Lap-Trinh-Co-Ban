@@ -1,0 +1,52 @@
+1️⃣ Machine Learning là gì?
+
+👉 Máy học từ dữ liệu để dự đoán
+
+Ví dụ:
+
+Điểm học → đậu / rớt
+
+Diện tích nhà → giá nhà
+
+Email → spam / không spam
+
+2️⃣ Cài thư viện ML
+pip install scikit-learn
+
+3️⃣ Dataset đơn giản (điểm → đậu/rớt)
+import pandas as pd
+
+data = {
+    "average": [4, 5, 6, 7, 8, 9],
+    "passed":  [0, 0, 1, 1, 1, 1]
+}
+
+df = pd.DataFrame(data)
+print(df)
+
+
+👉 passed:
+
+1 = đậu
+
+0 = rớt
+
+4️⃣ Chia dữ liệu X & y
+X = df[["average"]]  # đặc trưng
+y = df["passed"]     # nhãn
+
+5️⃣ Train model AI đầu tiên (Logistic Regression)
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()
+model.fit(X, y)
+
+
+🎉 Bạn vừa train một mô hình AI thật
+
+6️⃣ Dự đoán
+print(model.predict([[6.5]]))  # 1 = đậu
+print(model.predict([[4.5]]))  # 0 = rớt
+
+7️⃣ Xem xác suất (rất AI)
+print(model.predict_proba([[6.5]]))
