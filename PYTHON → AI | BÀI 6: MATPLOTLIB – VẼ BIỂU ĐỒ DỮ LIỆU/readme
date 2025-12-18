@@ -1,0 +1,50 @@
+1️⃣ Cài Matplotlib
+pip install matplotlib
+
+2️⃣ Vẽ biểu đồ đơn giản
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 6, 8, 10]
+
+plt.plot(x, y)
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.title("Biểu đồ tuyến tính")
+plt.show()
+
+3️⃣ Vẽ biểu đồ từ Pandas
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    "math": [7, 8, 9, 6],
+    "english": [8, 7, 9, 5]
+}
+
+df = pd.DataFrame(data)
+
+df.plot()
+plt.show()
+
+4️⃣ Biểu đồ cột (hay dùng trong phân tích)
+names = ["A", "B", "C"]
+scores = [8, 6, 9]
+
+plt.bar(names, scores)
+plt.title("Điểm học sinh")
+plt.show()
+
+5️⃣ Biểu đồ phân bố (rất quan trọng cho AI)
+scores = [5, 6, 7, 8, 9, 9, 10]
+
+plt.hist(scores)
+plt.title("Phân bố điểm")
+plt.show()
+
+
+👉 Dùng để:
+
+Phát hiện dữ liệu lệch
+
+Hiểu phân bố
