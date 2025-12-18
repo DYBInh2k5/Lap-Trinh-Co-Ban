@@ -1,0 +1,106 @@
+1️⃣ Vấn đề của RNN / LSTM (lý do Transformer ra đời)
+
+❌ Học tuần tự → chậm
+❌ Câu dài → quên thông tin đầu
+❌ Khó song song hóa
+
+➡️ Transformer giải quyết tất cả
+
+2️⃣ Ý tưởng cốt lõi của Transformer
+
+👉 Không đọc từng từ một
+👉 Nhìn toàn bộ câu cùng lúc
+
+🔑 Cốt lõi = ATTENTION
+
+3️⃣ Attention là gì? (HIỂU LÀ BIẾT 50% ChatGPT)
+
+Ví dụ câu:
+
+“Con mèo ngồi trên cái bàn vì NÓ mệt”
+
+👉 “NÓ” liên quan tới con mèo, không phải bàn
+
+➡️ Attention giúp AI:
+
+Biết từ nào liên quan từ nào
+
+Hiểu ngữ cảnh
+
+4️⃣ Self-Attention (cực kỳ quan trọng)
+
+Mỗi từ sẽ:
+
+Nhìn tất cả từ khác
+
+Tự quyết định tập trung vào từ nào
+
+📌 Ví dụ:
+
+I   love   this   product
+↑     ↑      ↑        ↑
+
+
+👉 “love” chú ý mạnh vào “product”
+
+5️⃣ Công thức (ý tưởng, không cần nhớ toán)
+
+Self-Attention dùng:
+
+Query (Q)
+
+Key (K)
+
+Value (V)
+
+👉 So sánh Q với K
+👉 Lấy trọng số nhân V
+
+➡️ Máy biết cái gì quan trọng
+
+6️⃣ Transformer gồm gì?
+🔹 Encoder
+
+Hiểu câu
+
+Tạo biểu diễn ngữ nghĩa
+
+🔹 Decoder
+
+Sinh câu mới (chatbot)
+
+👉 GPT = chỉ Decoder
+
+7️⃣ Kiến trúc Transformer (tóm gọn)
+Input
+ ↓
+Embedding
+ ↓
+Self-Attention
+ ↓
+Feed Forward
+ ↓
+(Repeat nhiều lần)
+ ↓
+Output
+
+
+👉 ChatGPT có hàng trăm layer
+
+8️⃣ Vì sao Transformer mạnh?
+
+✅ Song song → rất nhanh
+✅ Hiểu ngữ cảnh xa
+✅ Scale cực lớn
+✅ Học ngôn ngữ tự nhiên rất tốt
+
+➡️ Thống trị AI từ 2018 → nay
+
+9️⃣ ChatGPT hoạt động thế nào? (SIÊU QUAN TRỌNG)
+
+1️⃣ Học từ hàng tỷ câu
+2️⃣ Dự đoán từ tiếp theo
+3️⃣ Lặp lại → thành câu trả lời
+4️⃣ Fine-tune bằng RLHF (phản hồi con người)
+
+👉 ChatGPT không “biết”, mà dự đoán rất giỏi
