@@ -1,0 +1,89 @@
+1️⃣ HuggingFace là gì?
+
+👉 “Kho model AI lớn nhất thế giới”
+
+BERT
+
+GPT
+
+T5
+
+LLaMA (một phần)
+
+➡️ Không cần train từ đầu (rất nặng)
+
+2️⃣ Cài thư viện
+pip install transformers torch
+
+3️⃣ Chatbot đơn giản nhất (pipeline)
+from transformers import pipeline
+
+chatbot = pipeline(
+    "text-generation",
+    model="gpt2"
+)
+
+response = chatbot(
+    "Hello, how are you?",
+    max_length=50
+)
+
+print(response[0]["generated_text"])
+
+
+🎉 Bạn vừa chạy Transformer thật
+
+4️⃣ Chatbot dạng hội thoại
+while True:
+    text = input("You: ")
+    if text == "exit":
+        break
+
+    response = chatbot(
+        text,
+        max_length=100,
+        do_sample=True,
+        temperature=0.7
+    )
+
+    print("Bot:", response[0]["generated_text"])
+
+5️⃣ Hiểu các tham số quan trọng
+
+max_length: độ dài câu trả lời
+
+temperature:
+
+thấp → logic
+
+cao → sáng tạo
+
+do_sample=True: tạo câu tự nhiên
+
+6️⃣ Chatbot tiếng Việt (gợi ý)
+
+Một số model:
+
+vinai/phobert-base
+
+vinai/bartpho-word
+
+Ví dụ (phân loại / hiểu văn bản):
+
+from transformers import pipeline
+
+nlp = pipeline(
+    "sentiment-analysis",
+    model="cardiffnlp/twitter-xlm-roberta-base-sentiment"
+)
+
+print(nlp("Tôi rất thích học AI"))
+
+7️⃣ ChatGPT khác gì GPT-2?
+GPT-2	ChatGPT
+Cũ	Hiện đại
+Không fine-tune chat	Fine-tune hội thoại
+Không RLHF	Có RLHF
+Dùng thử	Dùng thực tế
+
+👉 Nhưng cách hoạt động giống nhau
