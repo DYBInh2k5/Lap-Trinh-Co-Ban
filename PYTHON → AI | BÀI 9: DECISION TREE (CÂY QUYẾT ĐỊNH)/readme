@@ -1,0 +1,62 @@
+1️⃣ Decision Tree là gì?
+
+👉 AI đặt câu hỏi dạng:
+
+Điểm ≥ 5?
+
+Toán ≥ 6?
+
+Anh ≥ 7?
+
+➡️ Cuối cùng ra quyết định Đậu / Rớt
+
+2️⃣ Chuẩn bị dữ liệu (2 đặc trưng)
+import pandas as pd
+
+data = {
+    "math":    [4, 5, 6, 7, 8, 9],
+    "english": [4, 5, 6, 7, 8, 9],
+    "passed":  [0, 0, 1, 1, 1, 1]
+}
+
+df = pd.DataFrame(data)
+
+X = df[["math", "english"]]
+y = df["passed"]
+
+3️⃣ Chia train / test
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+4️⃣ Train Decision Tree
+from sklearn.tree import DecisionTreeClassifier
+
+model = DecisionTreeClassifier(max_depth=3)
+model.fit(X_train, y_train)
+
+5️⃣ Dự đoán
+print(model.predict([[7, 6]]))  # 1 = đậu
+print(model.predict([[4, 5]]))  # 0 = rớt
+
+6️⃣ Đánh giá mô hình
+from sklearn.metrics import accuracy_score
+
+y_pred = model.predict(X_test)
+print("Accuracy:", accuracy_score(y_test, y_pred))
+
+7️⃣ So sánh với Logistic Regression
+
+👉 Decision Tree:
+
+Dễ hiểu
+
+Overfit nếu sâu quá
+
+👉 Logistic Regression:
+
+Ổn định
+
+Khó giải thích hơn
