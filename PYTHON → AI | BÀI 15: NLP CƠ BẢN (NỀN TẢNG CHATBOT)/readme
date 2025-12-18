@@ -1,0 +1,63 @@
+1️⃣ NLP là gì?
+
+👉 Dạy máy hiểu ngôn ngữ con người
+
+Ví dụ:
+
+Email → spam / không spam
+
+Câu nói → tích cực / tiêu cực
+
+Chatbot → trả lời người dùng
+
+2️⃣ Dữ liệu văn bản đơn giản
+texts = [
+    "I love this product",
+    "This is amazing",
+    "I hate this",
+    "This is terrible",
+    "Very good experience",
+    "Very bad service"
+]
+
+labels = [1, 1, 0, 0, 1, 0]  # 1: tích cực, 0: tiêu cực
+
+3️⃣ Biến văn bản → số (BAG OF WORDS)
+from sklearn.feature_extraction.text import CountVectorizer
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(texts)
+
+print(X.toarray())
+print(vectorizer.get_feature_names_out())
+
+
+👉 AI không hiểu chữ, chỉ hiểu số
+
+4️⃣ Train mô hình NLP đầu tiên
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()
+model.fit(X, labels)
+
+5️⃣ Dự đoán câu mới
+new_text = ["I love this service"]
+X_new = vectorizer.transform(new_text)
+
+print(model.predict(X_new))  # 1 = tích cực
+
+
+🎉 Bạn vừa làm AI hiểu văn bản
+
+6️⃣ TF-IDF (tốt hơn Bag of Words)
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(texts)
+
+
+👉 TF-IDF giúp:
+
+Giảm từ vô nghĩa
+
+NLP chính xác hơn
