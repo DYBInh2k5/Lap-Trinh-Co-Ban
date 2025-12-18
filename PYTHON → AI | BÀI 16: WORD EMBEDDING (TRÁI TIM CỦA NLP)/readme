@@ -1,0 +1,87 @@
+1️⃣ Vì sao cần Embedding?
+
+❌ Bag of Words / TF-IDF:
+
+Không hiểu ngữ nghĩa
+
+“good” ≠ “excellent”
+
+✅ Embedding:
+
+Từ có ý nghĩa gần nhau → vector gần nhau
+
+“good” ≈ “excellent”
+
+“bad” ≈ “terrible”
+
+👉 Máy hiểu ngữ nghĩa, không chỉ đếm từ
+
+2️⃣ Ý tưởng Embedding (cực quan trọng)
+
+Ví dụ:
+
+king  → [0.8, 0.2, 0.1]
+queen → [0.79, 0.21, 0.1]
+apple → [0.1, 0.9, 0.7]
+
+
+👉 king gần queen
+👉 king xa apple
+
+3️⃣ Embedding đơn giản với Keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, Flatten, Dense
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+4️⃣ Chuẩn bị dữ liệu văn bản
+texts = [
+    "i love this product",
+    "this is amazing",
+    "i hate this",
+    "this is terrible"
+]
+
+labels = [1, 1, 0, 0]
+
+5️⃣ Tokenize (chữ → số)
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(texts)
+
+sequences = tokenizer.texts_to_sequences(texts)
+X = pad_sequences(sequences, maxlen=5)
+
+print(X)
+
+
+👉 Mỗi từ → 1 số
+👉 Câu → chuỗi số
+
+6️⃣ Xây model dùng Embedding
+vocab_size = len(tokenizer.word_index) + 1
+
+model = Sequential([
+    Embedding(input_dim=vocab_size, output_dim=8, input_length=5),
+    Flatten(),
+    Dense(8, activation="relu"),
+    Dense(1, activation="sigmoid")
+])
+
+7️⃣ Compile & Train
+model.compile(
+    optimizer="adam",
+    loss="binary_crossentropy",
+    metrics=["accuracy"]
+)
+
+model.fit(X, labels, epochs=100, verbose=0)
+
+
+🎉 Bạn vừa train NLP bằng Embedding
+
+8️⃣ Dự đoán câu mới
+new_text = ["i love this"]
+seq = tokenizer.texts_to_sequences(new_text)
+seq = pad_sequences(seq, maxlen=5)
+
+print(model.predict(seq))
