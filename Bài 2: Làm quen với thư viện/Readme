@@ -1,0 +1,32 @@
+️# 1  Cài thư viện (chạy trong terminal)
+
+pip install numpy
+
+️# 2 NumPy – nền tảng của AI
+
+import numpy as np
+
+a = np.array([1, 2, 3, 4])
+
+print(a)
+
+print(a * 2)
+
+
+ NumPy giúp:
+
+Tính toán nhanh
+
+Làm việc với vector, ma trận (cốt lõi AI)
+
+️# 3 Ma trận (rất quan trọng)
+
+matrix = np.array([
+  
+    [1, 2],
+  
+    [3, 4]
+  
+])
+
+print(matrix)
